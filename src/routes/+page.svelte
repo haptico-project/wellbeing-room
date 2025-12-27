@@ -182,7 +182,7 @@
         {
             title: "顔リズム",
             body: "「顔リズム」は、熟練マッサージ技術者の手によるマッサージ技術を DX 化（デジタル技術化）したもので、森や海の自然低周波音から精製した低周波成分を用いた顔型振動マッサージデバイスです。\n「顔リズム」とその関連技術は国際的な評価を獲得しており、2017 年 京都大学総長賞（学際研究アイデアコンテスト）、2023 年 Health 2.0 Dubai Outstanding Leadership Award を受賞。私たちの革新的な治療振動技術へのアプローチが世界的に認められています。",
-            image: "/sections/techs/kaorhythm.png"
+            image: resolveImg("/sections/techs/kaorhythm.png")
         },
         {
             title: "Dr.AI - HARU",
