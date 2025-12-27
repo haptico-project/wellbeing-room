@@ -1,5 +1,6 @@
 <script lang="ts">
 
+    import { base } from '$app/paths';
     import {Swiper, SwiperSlide} from 'swiper/svelte';
     import 'swiper/css';
     import 'swiper/css/pagination';
@@ -331,7 +332,7 @@ Wellbeing Room で使用されている技術をご紹介しましょう。`,
 <section class="relative min-h-[100svh] flex items-center px-6 overflow-hidden">
     <div
             class="absolute inset-0 bg-cover bg-center scale-105"
-            style="background-image:url('{hero.image}')"
+            style="background-image:url('{base}/{hero.image}')"
     />
     <div class="absolute inset-0 bg-white/50"/>
 
@@ -423,7 +424,7 @@ Wellbeing Room で使用されている技術をご紹介しましょう。`,
                         use:reveal={{ delay: i * 120 }}
                 >
                     <div class="aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 mb-4">
-                        <img src={item.image} class="w-full h-full object-cover"/>
+                        <img src={`${base}/${item.image}`} class="w-full h-full object-cover"/>
                     </div>
 
                     <h3 class="text-lg font-medium text-[#0F3D47] mb-2">{item.title}</h3>
@@ -450,7 +451,7 @@ Wellbeing Room で使用されている技術をご紹介しましょう。`,
                         use:reveal={{ delay: i * 120 }}
                 >
                     <div class="aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 mb-4">
-                        <img src={opt.image} class="w-full h-full object-cover"/>
+                        <img src={`${base}/${opt.image}`} class="w-full h-full object-cover"/>
                     </div>
 
                     <h3 class="text-lg font-medium text-[#0F3D47] mb-2">{opt.title}</h3>
@@ -505,7 +506,7 @@ Wellbeing Room で使用されている技術をご紹介しましょう。`,
                             {#each c.images as img}
                                 <SwiperSlide>
                                     <img
-                                            src={img}
+                                            src={`${base}/${img}`}
                                             class="w-full h-[240px] md:h-[370px] object-cover"
                                     />
                                 </SwiperSlide>
@@ -553,7 +554,7 @@ Wellbeing Room で使用されている技術をご紹介しましょう。`,
                 >
                     <!-- Image -->
                     <div class="aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 mb-4">
-                        <img src={t.image} class="w-full h-full object-cover"/>
+                        <img src={`${base}/${t.image}`} class="w-full h-full object-cover"/>
                     </div>
 
                     <!-- Title -->
@@ -649,7 +650,7 @@ Wellbeing Room で使用されている技術をご紹介しましょう。`,
                             class="w-full max-w-[480px] mx-auto aspect-[4/3] rounded-xl overflow-hidden bg-black mb-4"
                     >
                         <img
-                                src={c.image}
+                                src={`${base}/${c.image}`}
                                 class="w-full h-full object-contain"
                                 alt={c.name}
                         />
@@ -740,7 +741,7 @@ Wellbeing Room で使用されている技術をご紹介しましょう。`,
             <Swiper modules={[Pagination]} pagination={{ clickable: true }} spaceBetween={20} slidesPerView={1}
                     class="w-full">
                 {#each pets.images as img}
-                    <SwiperSlide><img src={img} class="w-full object-cover"/></SwiperSlide>
+                    <SwiperSlide><img src={`${base}/${img}`} class="w-full object-cover"/></SwiperSlide>
                 {/each}
             </Swiper>
         </div>
