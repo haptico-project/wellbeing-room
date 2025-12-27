@@ -180,29 +180,29 @@
     ========================================================= */
     const technologies = [
         {
-            title: '顔リズム',
-            body: '...',
-            image: resolveImg('/sections/techs/kaorhythm.png')
+            title: "顔リズム",
+            body: "「顔リズム」は、熟練マッサージ技術者の手によるマッサージ技術を DX 化（デジタル技術化）したもので、森や海の自然低周波音から精製した低周波成分を用いた顔型振動マッサージデバイスです。\n「顔リズム」とその関連技術は国際的な評価を獲得しており、2017 年 京都大学総長賞（学際研究アイデアコンテスト）、2023 年 Health 2.0 Dubai Outstanding Leadership Award を受賞。私たちの革新的な治療振動技術へのアプローチが世界的に認められています。",
+            image: "/sections/techs/kaorhythm.png"
         },
         {
-            title: 'Dr.AI - HARU',
-            body: '...',
-            image: resolveImg('/sections/techs/draiharu.png')
+            title: "Dr.AI - HARU",
+            body: "多様なライフスタイルで「顔リズム」を使いたいとのご要望にお応えして、私たちは軽量でコンパクトな「Dr.AI - HARU」を開発しました。\nHARU 専用の顔リズム用アタッチメントにより、軽量・コンパクトな「顔リズム」をご利用いただけます。",
+            image: resolveImg("/sections/techs/draiharu.png")
         },
         {
-            title: 'ポータブル - HARU',
-            body: '...',
-            image: resolveImg('/sections/techs/portableharu.png')
+            title: "ポータブル - HARU",
+            body: "ポータブル - HARU は、デジタル疲労が溜まりやすい額や目の周りを重点的にケアすることで、優れた治療効果を実現します。自然音から抽出した振動で心地よい刺激を与え、頭痛や緊張を和らげます。また、長時間のパソコン作業で目が疲れた方には、目元専用のケアプログラムで眼精疲労の回復をサポートします。",
+            image: resolveImg("/sections/techs/portableharu.png")
         },
         {
-            title: 'HARU',
-            body: '...',
-            image: resolveImg('/sections/techs/haru.png')
+            title: "HARU - Haptic Adaptive Resonance Unit",
+            body: "HARU（触覚適応共鳴ユニット）は、あなた専用のパーソナルセラピストとして、一人ひとりのニーズに合わせたオーダーメイドの癒し体験をお届けします。フェイシャルアタッチメントと組み合わせることで、顔リズム体験に変身。眼精疲労や頭痛の緩和には、アタッチメントを交換するだけで対応できます。\nさらに、大切なペット専用のアタッチメントを通じて、愛するパートナーにも癒しの効果をもたらします。",
+            image: resolveImg("/sections/techs/haru.png")
         },
         {
-            title: 'TerraSonic',
-            body: '...',
-            image: resolveImg('/sections/techs/terrasonic.png')
+            title: "TerraSonic — 地球の低周波調和と音響技術が融合した新しい立体音響",
+            body: "Tactile DX Lab.（鈴木ら）の自然低周波音に関する先駆的研究により、低周波音響が三次元空間共鳴を生み出すという革新的発見がもたらされました。この画期的な成果は、まったく新しい空間音響技術へと発展し、日本を代表する音楽会社のオーディオ制作に採用され、数多くのライブコンサートやアートパフォーマンスで活用されています。また、著名な映画監督やアーティストとのコラボレーションも生み出しています。\nTerraSonic のイノベーションは止まりません。\n私たちのウェルネスルームで、最先端の TerraSonic 技術をご体験ください。",
+            image: resolveImg("/sections/techs/terrasonic.png")
         }
     ];
 
