@@ -11,7 +11,16 @@
     ========================================================= */
     const resolveImg = (src: string) => {
         if (!src) return '';
-        if (src.startsWith('http')) return src;
+
+        // http / https（先頭に / が付いていても外部URLとして扱う）
+        if (src.startsWith('http://') || src.startsWith('https://')) {
+            return src;
+        }
+        if (src.startsWith('/http://') || src.startsWith('/https://')) {
+            return src.slice(1);
+        }
+
+        // ローカルパスのみ base を付与
         return `${base}${src.startsWith('/') ? src : `/${src}`}`;
     };
 
