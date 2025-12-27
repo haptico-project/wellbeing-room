@@ -57,9 +57,9 @@
             'https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/3301372/726187_716584.jpeg'
         ),
         kicker: 'Sound, Touch, and Quiet Wellbeing',
-        title: 'ただ、いるだけで整う。\nWellbeing Room',
+        title: 'Wellbeing Room',
         subtitle:
-            '自然音の立体音響と触覚振動を組み合わせた、次世代型のウェルビーイング空間。短時間でも深い休息と意識の切り替えを実現します。',
+            '自然音の立体音響と触覚振動を組み合わせた、次世代型のウェルビーイング空間。\n短時間でも深い休息と意識の切り替えを実現します。',
         cta: [
             { label: 'Wellbeing Room とは', primary: true, href: '#about' },
             { label: '導入事例を見る', primary: false, href: '#cases' }
@@ -334,7 +334,7 @@
         </p>
 
         <h1
-                class="text-4xl md:text-6xl font-light text-[#0A1A2F] whitespace-pre-line leading-tight"
+                class="text-4xl md:text-5xl font-light text-[#0A1A2F] whitespace-pre-line leading-tight"
                 use:reveal={{ delay: 60 }}
         >
             {hero.title}
