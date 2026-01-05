@@ -10,12 +10,30 @@
   import PartnersSection from '../components/PartnersSection.svelte';
   import CollaboratorsSection from '../components/CollaboratorsSection.svelte';
   import SubscriptionSection from '../components/SubscriptionSection.svelte';
-  import PetsSection from '../components/PetsSection.svelte';
   import CtaSection from '../components/CtaSection.svelte';
 
   // Swiperのスタイルは親で定義
   import 'swiper/css';
   import 'swiper/css/pagination';
+
+  /* =========================================================
+     Agency code resolver
+  ========================================================= */
+  let agencyCode = '';
+  const path = window.location.pathname;
+
+  if (path === '/') {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("agencyCode")) {
+      agencyCode = params.get('agencyCode') as string;
+    }
+  } else {
+    agencyCode = path.replace("/", "");
+  }
+
+  if (agencyCode === '') {
+    agencyCode = '2139';
+  }
 
   /* =========================================================
      image resolver
@@ -47,15 +65,15 @@
     subtitle:
       'ただ、いるだけで整う\n自然の響きに満たされた空間',
     cta: [
-      {label: 'Wellbeing Room とは', primary: true, href: '#about'},
+      {label: 'Wellbeing room とは', primary: true, href: '#about'},
       {label: '導入事例を見る', primary: false, href: '#cases'}
     ]
   };
 
-  // Wellbeing Roomとは（説明＋YouTube）
+  // Wellbeing roomとは（説明＋YouTube）
   const about = {
-    title: 'Wellbeing Room とは',
-    body: `Wellbeing Room は、短時間で深く整う空間です。
+    title: 'Wellbeing room とは',
+    body: `Wellbeing room は、短時間で深く整う空間です。
 
 森の中で深呼吸するような、静かで深い休息を日常空間にそのまま持ち込むことを目指しています。
 施工工事は不要で、電源さえあればすぐに導入できます。`,
@@ -65,15 +83,15 @@
   // パッケージ構成
   const packageItems = [
     {
-      title: '設置は簡単',
+      title: 'オールインワンだから簡単設置',
       body:
         'Wellbeing room は、自然音を響かせる立体音響システムとマッサージベッドを含む、必要なものがすべて揃ったオールインワンパッケージ。\n' +
         '大掛かりな工事は不要、通常の電源さえあればちょっとした空間にすぐ設置可能です。小さな空間が、自然の森に包まれるような癒しの体験空間へと変わります。',
       image: resolveImg('/sections/packages/setup.png')
     },
     {
-      title: '設置例',
-      body: '立体音響\n＋\nコラーゲンマスク\n＋\nボディケア（Dr.AI)。',
+      title: '設置例のご紹介',
+      body: '右図は、立体音響＋コラーゲンマスク＋ボディケア（Dr.AI)の設置例です。',
       image: resolveImg('/sections/packages/image.gif')
     }
   ];
@@ -91,15 +109,15 @@
       title: 'Wellbeing ヘッド',
       body: '「Wellbeing フェイス」は、\n' +
         '\n' +'は、デジタル疲労が溜まりやすい額や目の周りを重点的にケアすることで、優れた治療効果を実現します。自然音から抽出した振動で心地よい刺激を与え、頭痛や緊張を和らげます。また、長時間のパソコン作業で目が疲れた方には、目元専用のケアプログラムで眼精疲労の回復をサポートします。',
-      image: resolveImg('https://placehold.co/600x400?text=Bodycare')
+      image: resolveImg('/sections/options/head.png')
     }
   ];
 
   // 関連ソリューション：ペット向け
   const pets = {
-    title: '関連ソリューション：Wellbeing Room for Animals',
+    title: '関連ソリューション：Wellbeing room for Animals',
     body: `大切なパートナーたちにも自然の“整える力”を。
-人のリラクゼーションや回復に用いられてきたWellbeing Roomの仕組みを動物のために最適化したのが「Wellbeing Room for Animals」です。`,
+人のリラクゼーションや回復に用いられてきたWellbeing roomの仕組みを動物のために最適化したのが「Wellbeing room for Animals」です。`,
     images: [
       resolveImg('/sections/pets/img1.png'),
       resolveImg('/sections/pets/img2.png'),
@@ -120,7 +138,7 @@
   const caseStudies = [
     {
       title: '加賀電子株式会社 様',
-      body: '本社内ジムの一角に Wellbeing Room を導入いただきました。',
+      body: '本社内ジムの一角に Wellbeing room を導入いただきました。',
       images: [
         resolveImg('/sections/cases/kaga/wbr1.png'),
         resolveImg('/sections/cases/kaga/wbr2.png'),
@@ -146,26 +164,6 @@
 
   // 技術紹介
   const technologies = [
-    {
-      title: "顔リズム",
-      body: "「顔リズム」は、熟練マッサージ技術者の手によるマッサージ技術を DX 化（デジタル技術化）したもので、森や海の自然低周波音から精製した低周波成分を用いた顔型振動マッサージデバイスです。\n「顔リズム」とその関連技術は国際的な評価を獲得しており、2017 年 京都大学総長賞（学際研究アイデアコンテスト）、2023 年 Health 2.0 Dubai Outstanding Leadership Award を受賞。私たちの革新的な治療振動技術へのアプローチが世界的に認められています。",
-      image: resolveImg("/sections/techs/kaorhythm.png")
-    },
-    {
-      title: "Dr.AI - HARU",
-      body: "多様なライフスタイルで「顔リズム」を使いたいとのご要望にお応えして、私たちは軽量でコンパクトな「Dr.AI - HARU」を開発しました。\nHARU 専用の顔リズム用アタッチメントにより、軽量・コンパクトな「顔リズム」をご利用いただけます。",
-      image: resolveImg("/sections/techs/draiharu.png")
-    },
-    {
-      title: "ポータブル - HARU",
-      body: "ポータブル - HARU は、デジタル疲労が溜まりやすい額や目の周りを重点的にケアすることで、優れた治療効果を実現します。自然音から抽出した振動で心地よい刺激を与え、頭痛や緊張を和らげます。また、長時間のパソコン作業で目が疲れた方には、目元専用のケアプログラムで眼精疲労の回復をサポートします。",
-      image: resolveImg("/sections/techs/portableharu.png")
-    },
-    {
-      title: "HARU - Haptic Adaptive Resonance Unit",
-      body: "HARU（触覚適応共鳴ユニット）は、あなた専用のパーソナルセラピストとして、一人ひとりのニーズに合わせたオーダーメイドの癒し体験をお届けします。フェイシャルアタッチメントと組み合わせることで、顔リズム体験に変身。眼精疲労や頭痛の緩和には、アタッチメントを交換するだけで対応できます。\nさらに、大切なペット専用のアタッチメントを通じて、愛するパートナーにも癒しの効果をもたらします。",
-      image: resolveImg("/sections/techs/haru.png")
-    },
     {
       title: "TerraSonic — 地球の低周波調和と音響技術が融合した新しい立体音響",
       body: "Tactile DX Lab.（鈴木ら）の自然低周波音に関する先駆的研究により、低周波音響が三次元空間共鳴を生み出すという革新的発見がもたらされました。この画期的な成果は、まったく新しい空間音響技術へと発展し、日本を代表する音楽会社のオーディオ制作に採用され、数多くのライブコンサートやアートパフォーマンスで活用されています。また、著名な映画監督やアーティストとのコラボレーションも生み出しています。\nTerraSonic のイノベーションは止まりません。\n私たちのウェルネスルームで、最先端の TerraSonic 技術をご体験ください。",
@@ -246,10 +244,13 @@
   // サブスク
   const plans = [
     {
-      name: 'Personal',
+      name: '個人',
       price: '¥5,500 / month',
-      desc: '個人向け Wellbeing Room の月額プランです。',
-      features: ['Wellbeing Room'],
+      initFee: '¥22,000',
+      priceId: 'price_1Qpiw0Po9yD7PttVDNEXKN2W',
+      desc: '個人向け Haptic wellbeing room の月額プランです。※決済ページには「airumx.com_森の振動浴」と表示されます。',
+      features: ['Haptic wellbeing room'],
+      active: true,
       popular: true
     }
   ];
@@ -312,15 +313,9 @@
         bgColorClass="bg-white"
 />
 
-<TechnologySection
-        technologies={technologies}
-        bgColorClass="bg-[#F7FAFC]"
-        paddingClass="py-24"
-/>
-
 <PartnersSection
         partners={partners}
-        bgColorClass="bg-white"
+        bgColorClass="bg-[#F7FAFC]"
 />
 
 <CollaboratorsSection
@@ -328,16 +323,11 @@
         bgColorClass="bg-white"
 />
 
-
 <SubscriptionSection
         plans={plans}
         bgColorClass="bg-[#F7FAFC]"
         paddingClass="py-44"
-/>
-
-<PetsSection
-        pets={pets}
-        bgColorClass="bg-white"
+        bind:agencyCode={agencyCode}
 />
 
 <CtaSection/>

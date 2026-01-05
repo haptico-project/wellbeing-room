@@ -1,7 +1,7 @@
 <script lang="ts">
   import SectionLayout from './SectionLayout.svelte';
 
-  // 型定義（元のファイルから適切に抽出するか、types.tsを作成してください）
+  // Propsの型定義
   interface PackageItem {
     title: string;
     body: string;
@@ -10,11 +10,10 @@
 
   // Propsの定義
   export let packageItems: PackageItem[];
-  export let bgColorClass: string = 'bg-[#F7FAFC]'; // 呼び出し元で指定可能
+  export let bgColorClass: string = 'bg-[#F7FAFC]';
 
-  // Scroll Reveal 関数 (元のファイルからコピー)
+  // Scroll Reveal 関数 (省略なし)
   function reveal(node: HTMLElement, {delay = 0} = {}) {
-    // ... reveal関数の実装 ...
     node.style.opacity = '0';
     node.style.transform = 'translateY(24px)';
 
@@ -38,23 +37,43 @@
 </script>
 
 <SectionLayout {bgColorClass}>
-    <h2 class="text-3xl md:text-4xl font-light text-center mb-12" use:reveal>
+    <h2 class="text-4xl md:text-5xl font-light text-center mb-20" use:reveal>
         必要なものがすべて揃ったパッケージ
     </h2>
 
-    <div class="grid md:grid-cols-3 gap-10">
-        {#each packageItems as item, i}
-            <article
-                    class="p-6 rounded-3xl bg-white shadow border border-black/5"
-                    use:reveal={{ delay: i * 120 }}
+    <div class="space-y-32"> {#each packageItems as item, i}
+        <div
+                class="grid md:grid-cols-2 gap-16 items-center"
+                class:md:grid-flow-col-dense={i % 2 !== 0}
+        >
+            <div
+                    class="order-2 md:order-1"
+                    class:md:order-2={i % 2 !== 0}
+                    use:reveal={{ delay: i * 150 }}
             >
-                <div class="aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 mb-4">
-                    <img src={item.image} alt={item.title} class="w-full h-full object-cover"/>
-                </div>
+                <h3 class="text-3xl md:text-4xl font-light text-[#0A1A2F] mb-6 leading-snug">
+                    {item.title}
+                </h3>
 
-                <h3 class="text-lg font-medium text-[#0F3D47] mb-2">{item.title}</h3>
-                <p class="text-sm text-[#1B2A3C] leading-relaxed">{item.body}</p>
-            </article>
-        {/each}
+                <p class="text-lg text-[#1B2A3C] whitespace-pre-line leading-relaxed">
+                    {item.body}
+                </p>
+            </div>
+
+            <div
+                    class="order-1 md:order-2"
+                    class:md:order-1={i % 2 !== 0}
+                    use:reveal={{ delay: i * 150 + 100 }}
+            >
+                <div class="aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                    <img
+                            src={item.image}
+                            alt={item.title}
+                            class="w-full h-full object-cover"
+                    />
+                </div>
+            </div>
+        </div>
+    {/each}
     </div>
 </SectionLayout>

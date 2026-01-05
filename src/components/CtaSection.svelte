@@ -1,5 +1,7 @@
 <script lang="ts">
   // Scroll Reveal 関数
+  import ContactService from "../domains/contactService";
+
   function reveal(node: HTMLElement, { delay = 0 } = {}) {
     node.style.opacity = '0';
     node.style.transform = 'translateY(24px)';
@@ -21,6 +23,8 @@
 
     observer.observe(node);
   }
+
+  const mailtoLink = ContactService.createMailToLink();
 </script>
 
 <section class="py-40 bg-[#0F3D47] text-center px-6 text-white">
@@ -37,11 +41,12 @@
             Wellbeing Room の導入やコラボレーションについて、お気軽にご相談ください。
         </p>
 
-        <button
-                class="px-10 py-4 bg-white text-[#0F3D47] rounded-md text-sm md:text-base tracking-wide hover:bg-emerald-50 transition"
+        <a
+                href={mailtoLink}
+                class="inline-block px-10 py-4 bg-white text-[#0F3D47] rounded-md text-sm md:text-base tracking-wide hover:bg-emerald-50 transition"
                 use:reveal={{ delay: 200 }}
         >
             導入・体験について問い合わせる
-        </button>
+        </a>
     </div>
 </section>
