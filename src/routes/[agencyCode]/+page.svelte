@@ -2,7 +2,6 @@
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  // SvelteKitのベースパス設定（GitHub Pagesのパスなど）を取得するために必要
   import { base } from '$app/paths';
 
   // ----------------------------------------------------
