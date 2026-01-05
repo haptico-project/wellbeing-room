@@ -37,7 +37,7 @@
         選べる Wellbeing アイテム
     </h2>
 
-    <div class="grid md:grid-cols-2 gap-10">
+    <div class="grid md:grid-cols-3 gap-10">
         {#each options as opt, i}
             <article
                     class="p-6 rounded-3xl bg-[#F7FAFC] shadow border border-black/5"
