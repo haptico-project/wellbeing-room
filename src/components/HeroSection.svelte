@@ -51,7 +51,7 @@
                 class="text-5xl md:text-7xl lg:text-8xl font-light text-white whitespace-pre-line leading-snug tracking-wide font-serif"
                 use:reveal={{ delay: 60 }}
         >
-            <span>{title}</span>
+            {title}
         </h1>
 
         <p
@@ -61,19 +61,19 @@
             {subtitle}
         </p>
 
-        <div class="mt-24 flex flex-wrap gap-4 justify-center" use:reveal={{ delay: 240 }}>
+        <div class="mt-24 flex flex-col gap-y-4 items-center mx-auto max-w-xs" use:reveal={{ delay: 240 }}>
             {#each cta as c}
                 {#if c.primary}
                     <a
                             href={c.href}
-                            class="px-10 py-4 rounded-lg bg-white text-[#0F3D47] text-lg tracking-wider hover:bg-gray-100 transition font-sans"
+                            class="w-full text-center px-10 py-4 rounded-lg bg-white text-[#0F3D47] text-lg tracking-wider hover:bg-gray-100 transition font-sans"
                     >
                         {c.label}
                     </a>
                 {:else}
                     <a
                             href={c.href}
-                            class="px-10 py-4 rounded-lg border border-white text-white text-lg tracking-wider hover:bg-white/10 transition font-sans"
+                            class="w-full text-center px-10 py-4 rounded-lg border border-white text-white text-lg tracking-wider hover:bg-white/10 transition font-sans"
                     >
                         {c.label}
                     </a>
