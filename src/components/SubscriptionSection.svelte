@@ -90,7 +90,7 @@
         サブスクリプション
     </h2>
 
-    <div class="grid grid-cols-2 gap-12 max-w-xl mx-auto">
+    <div class="grid grid-cols-1 gap-12 max-w-xl mx-auto">
         {#each plans as p}
             <div class="relative rounded-3xl bg-white border border-black/5 px-10 py-12 shadow-lg" use:reveal>
                 {#if p.popular}
