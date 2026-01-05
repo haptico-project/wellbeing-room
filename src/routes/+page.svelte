@@ -27,8 +27,6 @@
     if (params.has("agencyCode")) {
       agencyCode = params.get('agencyCode') as string;
     }
-  } else {
-    agencyCode = path.replace("/", "");
   }
 
   if (agencyCode === '') {
