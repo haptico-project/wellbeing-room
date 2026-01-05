@@ -1,16 +1,16 @@
 <script lang="ts">
   import {base} from '$app/paths';
-  import HeroSection from '../../components/HeroSection.svelte';
-  import AboutSection from '../../components/AboutSection.svelte';
-  import PackageSection from '../../components/PackageSection.svelte';
-  import OptionsSection from '../../components/OptionsSection.svelte';
-  import ScenesSection from '../../components/ScenesSection.svelte';
-  import CaseStudiesSection from '../../components/CaseStudiesSection.svelte';
-  import TechnologySection from '../../components/TechnologySection.svelte';
-  import PartnersSection from '../../components/PartnersSection.svelte';
-  import CollaboratorsSection from '../../components/CollaboratorsSection.svelte';
-  import SubscriptionSection from '../../components/SubscriptionSection.svelte';
-  import CtaSection from '../../components/CtaSection.svelte';
+  import HeroSection from '../components/HeroSection.svelte';
+  import AboutSection from '../components/AboutSection.svelte';
+  import PackageSection from '../components/PackageSection.svelte';
+  import OptionsSection from '../components/OptionsSection.svelte';
+  import ScenesSection from '../components/ScenesSection.svelte';
+  import CaseStudiesSection from '../components/CaseStudiesSection.svelte';
+  import TechnologySection from '../components/TechnologySection.svelte';
+  import PartnersSection from '../components/PartnersSection.svelte';
+  import CollaboratorsSection from '../components/CollaboratorsSection.svelte';
+  import SubscriptionSection from '../components/SubscriptionSection.svelte';
+  import CtaSection from '../components/CtaSection.svelte';
 
   // Swiperのスタイルは親で定義
   import 'swiper/css';
