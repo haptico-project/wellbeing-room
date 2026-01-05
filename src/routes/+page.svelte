@@ -248,6 +248,17 @@
       features: ['Haptic wellbeing room'],
       active: true,
       popular: true
+    },
+    {
+      name: '法人',
+      price: '¥19,800 / month',
+      initFee: '¥110,000',
+      priceId: 'price_1SQgCiPo9yD7PttVFoldE80Y',
+      desc: '法人向け Haptic wellbeing room の月額プランです。※決済ページには「airumx.com_森の振動浴」と表示されます。初期手数料 110000 円については、設置時に請求いたします。',
+      features: ['Haptic wellbeing room'],
+      active: true,
+      popular: false,
+      agency_code: '5199'
     }
   ];
 
