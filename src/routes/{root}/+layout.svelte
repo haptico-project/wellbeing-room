@@ -1,7 +1,7 @@
 <script>
-  import "../app.css";
+  import "../../app.css";
   import {page} from "$app/stores";
-  import ContactService from "../domains/contactService";
+  import ContactService from "../../domains/contactService";
 
   $: currentPath = $page.url?.pathname ?? "";
 

@@ -30,8 +30,8 @@ importers:
         specifier: ^11.0.2
         version: 11.10.0
       swiper:
-        specifier: ^12.0.3
-        version: 12.0.3
+        specifier: '8'
+        version: 8.4.7
       yup:
         specifier: ^1.4.0
         version: 1.7.1
@@ -1332,6 +1332,9 @@ packages:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
 
+  dom7@4.0.6:
+    resolution: {integrity: sha512-emjdpPLhpNubapLFdjNL9tP06Sr+GZkrIHEXLWvOGsytACUrkbeIdjO5g77m00BrHTznnlcNqgmn7pCN192TBA==}
+
   dotenv-cli@7.4.4:
     resolution: {integrity: sha512-XkBYCG0tPIes+YZr4SpfFv76SQrV/LeCE8CI7JSEMi3VR9MvTihCGTOtbIexD6i2mXF+6px7trb1imVCXSNMDw==}
     hasBin: true
@@ -2583,6 +2586,9 @@ packages:
     resolution: {integrity: sha512-NzNVhJDYpwceVVii8/Hu6DKfD2G+NrQHlS/V/qgv763EYudVwEcMQNxd2lh+0VrUByXN/oJkl5grOhYWvQUYiw==}
     engines: {node: '>=0.10.0'}
 
+  ssr-window@4.0.2:
+    resolution: {integrity: sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==}
+
   static-extend@0.1.2:
     resolution: {integrity: sha512-72E9+uLc27Mt718pMHt9VMNiAL4LMsmDbBva8mxWUCkT07fSzEGMYUCk0XWY6lp0j6RBAG4cJ3mWuZv2OE3s0g==}
     engines: {node: '>=0.10.0'}
@@ -2696,8 +2702,8 @@ packages:
     resolution: {integrity: sha512-upi/0ZGkYgEcLeGieoz8gT74oWHA0E7JivX7aN9mAf+Tc7BQoRBvnIGHoPDw+f9TXTW4s6kGYCZJtauP6OYp7g==}
     hasBin: true
 
-  swiper@12.0.3:
-    resolution: {integrity: sha512-BHd6U1VPEIksrXlyXjMmRWO0onmdNPaTAFduzqR3pgjvi7KfmUCAm/0cj49u2D7B0zNjMw02TSeXfinC1hDCXg==}
+  swiper@8.4.7:
+    resolution: {integrity: sha512-VwO/KU3i9IV2Sf+W2NqyzwWob4yX9Qdedq6vBtS0rFqJ6Fa5iLUJwxQkuD4I38w0WDJwmFl8ojkdcRFPHWD+2g==}
     engines: {node: '>= 4.7.0'}
 
   tailwindcss@4.1.18:
@@ -4121,6 +4127,10 @@ snapshots:
     dependencies:
       path-type: 4.0.0
 
+  dom7@4.0.6:
+    dependencies:
+      ssr-window: 4.0.2
+
   dotenv-cli@7.4.4:
     dependencies:
       cross-spawn: 7.0.6
@@ -5461,6 +5471,8 @@ snapshots:
     dependencies:
       extend-shallow: 3.0.2
 
+  ssr-window@4.0.2: {}
+
   static-extend@0.1.2:
     dependencies:
       define-property: 0.2.5
@@ -5608,7 +5620,10 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  swiper@12.0.3: {}
+  swiper@8.4.7:
+    dependencies:
+      dom7: 4.0.6
+      ssr-window: 4.0.2
 
   tailwindcss@4.1.18: {}
 
