@@ -20,18 +20,6 @@ const config = {
     }),
     paths: {
       base: isProdPages ? '/wellbeing-room' : ''
-    },
-    prerender: {
-      // 未クロールルートのエラー処理を制御
-      handleUnseenRoutes: ({ routeId, url }) => {
-        // /[agencyCode] ルートでの失敗を無視する
-        if (routeId.startsWith('/[agencyCode]')) {
-          console.warn(`Ignoring route during prerender: ${routeId}`);
-          return 'ignore';
-        }
-        // その他の未クロールルートはエラーにする
-        return 'error';
-      }
     }
     // paths: {
     // 	base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
