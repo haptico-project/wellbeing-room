@@ -4,8 +4,6 @@
   import { onMount } from 'svelte';
   import { base } from '$app/paths';
 
-  export const prerender = false;
-
   onMount(() => {
     // 現在のパス全体を取得（例: /wellbeing-room/agency-code/）
     const currentPath = $page.url.pathname;
