@@ -43,9 +43,9 @@
 
     <div class="relative max-w-4xl mx-auto text-center">
 
-        <p class="tracking-[0.2em] text-xl md:text-2xl text-white mb-10 font-light font-serif" use:reveal>
-            <span>{kicker}</span>
-        </p>
+<!--        <p class="tracking-[0.2em] text-xl md:text-2xl text-white mb-10 font-light font-serif" use:reveal>-->
+<!--            <span>{kicker}</span>-->
+<!--        </p>-->
 
         <h1
                 class="text-5xl md:text-7xl lg:text-8xl font-light text-white whitespace-pre-line leading-snug tracking-wide font-serif"
