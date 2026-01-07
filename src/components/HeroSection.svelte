@@ -4,7 +4,7 @@
 
   // Propsの定義
   export let image: string;
-  export let kicker: string;
+  export let kicker: string; // kickerは使用されていませんが、定義は維持
   export let title: string;
   export let subtitle: string;
   export let cta: CtaItem[];
@@ -43,25 +43,21 @@
 
     <div class="relative max-w-4xl mx-auto text-center">
 
-<!--        <p class="tracking-[0.2em] text-xl md:text-2xl text-white mb-10 font-light font-serif" use:reveal>-->
-<!--            <span>{kicker}</span>-->
-<!--        </p>-->
-
         <h1
-                class="text-5xl md:text-7xl lg:text-8xl font-light text-white whitespace-pre-line leading-snug tracking-wide font-serif"
+                class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white whitespace-pre-line leading-snug tracking-wide font-serif"
                 use:reveal={{ delay: 60 }}
         >
             {title}
         </h1>
 
         <p
-                class="mt-8 text-2xl md:text-3xl text-white whitespace-pre-line leading-loose font-serif"
+                class="mt-6 text-2xl md:text-3xl text-white whitespace-pre-line leading-loose font-serif"
                 use:reveal={{ delay: 140 }}
         >
             {subtitle}
         </p>
 
-        <div class="mt-16 flex flex-col gap-y-4 items-center mx-auto max-w-xs" use:reveal={{ delay: 240 }}>
+        <div class="mt-12 flex flex-col gap-y-4 items-center mx-auto max-w-xs" use:reveal={{ delay: 240 }}>
             {#each cta as c}
                 {#if c.primary}
                     <a
