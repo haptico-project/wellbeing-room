@@ -33,7 +33,7 @@
   }
 </script>
 
-<section class="relative min-h-[100svh] flex items-center justify-center px-6 overflow-hidden">
+<section class="relative min-h-screen min-h-[100svh] flex items-center justify-center px-6 overflow-hidden">
     <div
             class="absolute inset-0 bg-cover bg-center scale-105"
             style="background-image:url('{image}')"
@@ -61,7 +61,7 @@
             {subtitle}
         </p>
 
-        <div class="mt-24 flex flex-col gap-y-4 items-center mx-auto max-w-xs" use:reveal={{ delay: 240 }}>
+        <div class="mt-16 flex flex-col gap-y-4 items-center mx-auto max-w-xs" use:reveal={{ delay: 240 }}>
             {#each cta as c}
                 {#if c.primary}
                     <a
