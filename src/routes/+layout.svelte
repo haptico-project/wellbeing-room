@@ -26,9 +26,9 @@
       title: "サポート",
       links: [
         {label: "お問い合わせ", href: mailToLink},
-        // {label: "特定商取引法の表示", href: "#"},　TODO
-        // {label: "プライバシーポリシー", href: "#"}, TODO
-        // {label: "利用規約", href: "#"}, TODO
+        {label: "特定商取引法の表示", href: "/tokusho"},
+        {label: "プライバシーポリシー", href: "/privacy"},
+        {label: "利用規約", href: "/terms"},
       ]
     },
   ];
