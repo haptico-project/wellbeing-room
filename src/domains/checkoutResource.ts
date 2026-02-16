@@ -1,5 +1,9 @@
 import axios from "axios";
 
+const DEFAULT_CHECKOUT_SERVER = "https://payflow-backend.fly.dev/";
+const checkoutServer =
+  import.meta.env.VITE_PUBLIC_CHECKOUT_SERVER || DEFAULT_CHECKOUT_SERVER;
+
 const isHandlerEnabled = (config: any) => {
   // eslint-disable-next-line no-prototype-builtins
   return !(config.hasOwnProperty("handlerEnabled") && !config.handlerEnabled);
@@ -7,7 +11,7 @@ const isHandlerEnabled = (config: any) => {
 
 // axiosInstance.get('/v2/api-endpoint', { handlerEnabled: false })
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_PUBLIC_CHECKOUT_SERVER,
+  baseURL: checkoutServer,
 });
 
 const requestHandler = (request: any) => {

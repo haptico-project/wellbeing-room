@@ -39,4 +39,14 @@ export default class CheckoutService {
     }
     return CheckoutResource.post(`/api/v1/checkout/subscription-url`, data);
   }
+
+  public static getSubscriptionPortalUrl(shopId: string, mailAddress: string, returnUrl: string) {
+    return CheckoutResource.get('/api/v1/subscription/portal-url', {
+      params: {
+        shopId,
+        mail_address: mailAddress,
+        return_url: returnUrl
+      }
+    });
+  }
 }
