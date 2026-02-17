@@ -14,6 +14,7 @@
     popular: boolean;
     active: boolean; // 追加
     agency_code?: string;
+    oneTimePriceIds?: string[];
   }
 
   // Propsの定義
@@ -57,7 +58,7 @@
       useAgencyCode = agencyCode;
     }
 
-    CheckoutService.checkouForPaymanage(plan.priceId, useAgencyCode, true)
+    CheckoutService.checkouForPaymanage(plan.priceId, useAgencyCode, true, plan.oneTimePriceIds || [])
       .then((response) => {
         if (response.data) {
           const url = response.data as string;

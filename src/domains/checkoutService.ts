@@ -2,9 +2,9 @@ import CheckoutResource from "./checkoutResource";
 
 export default class CheckoutService {
 
-  public static checkouForPaymanage(priceId: string, agencyCode: string, subscription: boolean) {
+  public static checkouForPaymanage(priceId: string, agencyCode: string, subscription: boolean, oneTimePriceIds: string[] = []) {
     if (subscription) {
-      return this.checkoutSubscriptionForPaymanage(priceId, agencyCode);
+      return this.checkoutSubscriptionForPaymanage(priceId, agencyCode, oneTimePriceIds);
     } else {
       return this.checkoutPaymentForPaymanage(priceId, agencyCode);
     }
@@ -25,7 +25,7 @@ export default class CheckoutService {
     return CheckoutResource.post(`/api/v1/checkout/payment-url`, data);
   }
 
-  public static checkoutSubscriptionForPaymanage(priceId: string, agencyCode: string) {
+  public static checkoutSubscriptionForPaymanage(priceId: string, agencyCode: string, oneTimePriceIds: string[] = []) {
     const data = {
       agencyCode: agencyCode,
       checkoutSuccessUrl: window.location.href,
@@ -35,7 +35,8 @@ export default class CheckoutService {
           productId: `${priceId}`,
           quantity: 1
         }
-      ]
+      ],
+      oneTimePriceIds
     }
     return CheckoutResource.post(`/api/v1/checkout/subscription-url`, data);
   }
