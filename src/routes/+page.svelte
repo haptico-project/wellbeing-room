@@ -337,3 +337,10 @@
 />
 
 <CtaSection/>
+
+<!-- 販売店舗コード確認用バッジ（画面下端に常時表示） -->
+<div
+        class="fixed bottom-3 right-3 z-50 rounded-full bg-[#0F3D47]/90 px-4 py-1.5 text-xs text-white shadow-lg backdrop-blur"
+>
+    販売店舗コード: <span class="font-medium tracking-wider">{agencyCode}</span>
+</div>

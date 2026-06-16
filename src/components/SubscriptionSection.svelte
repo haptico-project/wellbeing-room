@@ -30,6 +30,9 @@
   let isPortalLoading = false;
   let portalError = '';
 
+  // 決済ボタンの連打防止用：処理中のプランの priceId を保持
+  let checkoutLoadingPriceId: string | null = null;
+
   const searchParams = new URLSearchParams(window.location.search);
   if (searchParams.has('mail_address')) {
     portalMailAddress = searchParams.get('mail_address') || '';
@@ -39,6 +42,11 @@
   // 🔴 決済処理ロジック
   // =========================================================
   const checkout = (plan: PlanItem) => {
+    // すでにいずれかの決済処理が進行中なら何もしない（連打防止）
+    if (checkoutLoadingPriceId !== null) {
+      return;
+    }
+
     let useAgencyCode = agencyCode;
 
     // プラン固有のコードがあればそれを優先
@@ -46,10 +54,10 @@
       useAgencyCode = plan.agency_code;
     }
 
-    // 代理店コードが設定されていない場合、プロンプトで入力させる
+    // 販売店舗コードが設定されていない場合、プロンプトで入力させる
     if (!useAgencyCode) {
       // Svelteのリアクティビティを考慮し、ローカル変数ではなくexport letされたagencyCodeを更新する
-      const inputCode = window.prompt("代理店コードを入力してください。", "") || '';
+      const inputCode = window.prompt("販売店舗コードを入力してください。", "") || '';
       if (!inputCode) {
         // ユーザーがキャンセルまたは何も入力しなかった場合
         return;
@@ -58,10 +66,14 @@
       useAgencyCode = agencyCode;
     }
 
+    // 決済ページ準備中の状態に切り替え（ボタンを無効化＆スピナー表示）
+    checkoutLoadingPriceId = plan.priceId;
+
     CheckoutService.checkouForPaymanage(plan.priceId, useAgencyCode, true, plan.oneTimePriceIds || [])
       .then((response) => {
         if (response.data) {
           const url = response.data as string;
+          // このまま決済ページへ遷移するため、ローディング状態は維持する
           window.location.assign(url);
         } else {
           throw new Error()
@@ -69,7 +81,9 @@
       })
       .catch((e) => {
         console.error('決済ページの表示に失敗しました:', e);
-        alert('決済ページの表示に失敗しました。\n販売店コードに誤りがないかご確認ください。');
+        alert('決済ページの表示に失敗しました。\n販売店舗コードに誤りがないかご確認ください。');
+        // 失敗時のみ再操作できるよう状態を戻す
+        checkoutLoadingPriceId = null;
       });
   }
 
@@ -175,9 +189,16 @@
                     {#if p.active}
                         <button
                                 on:click={() => checkout(p)}
-                                class="w-full max-w-xs px-8 py-3 rounded-full bg-[#0F3D47] text-white font-medium tracking-wider hover:bg-[#0c3139] transition shadow-md"
+                                disabled={checkoutLoadingPriceId !== null}
+                                aria-busy={checkoutLoadingPriceId === p.priceId}
+                                class="inline-flex items-center justify-center gap-2 w-full max-w-xs px-8 py-3 rounded-full bg-[#0F3D47] text-white font-medium tracking-wider hover:bg-[#0c3139] transition shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
                         >
-                            今すぐ申し込む
+                            {#if checkoutLoadingPriceId === p.priceId}
+                                <span class="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" aria-hidden="true"></span>
+                                決済ページを準備中...
+                            {:else}
+                                今すぐ申し込む
+                            {/if}
                         </button>
                     {:else}
                         <button
