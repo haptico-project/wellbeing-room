@@ -1,6 +1,8 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import SectionLayout from './SectionLayout.svelte';
   import CheckoutService from '../domains/checkoutService'
+  import MailNoticeDialog from './MailNoticeDialog.svelte';
   import type { AxiosError } from 'axios';
 
   // Propsの型定義を更新
@@ -30,6 +32,11 @@
   let isPortalLoading = false;
   let portalError = '';
 
+  // 通知メール案内ダイアログ（決済完了 / 解約ポータルからの戻り）
+  let showMailNotice = false;
+  let mailNoticeTitle = '';
+  let mailNoticeMessage = '';
+
   // 決済ボタンの連打防止用：処理中のプランの priceId を保持
   let checkoutLoadingPriceId: string | null = null;
 
@@ -37,6 +44,27 @@
   if (searchParams.has('mail_address')) {
     portalMailAddress = searchParams.get('mail_address') || '';
   }
+
+  onMount(() => {
+    const checkout = searchParams.get('checkout');
+    const portalReturn = searchParams.get('portal_return');
+    if (checkout === 'success') {
+      mailNoticeTitle = 'お申し込みありがとうございます';
+      mailNoticeMessage = 'ご決済が完了しました。\nhaptico.co.jp より、お申し込みに関する通知メールをお送りします。';
+      showMailNotice = true;
+    } else if (portalReturn === '1') {
+      mailNoticeTitle = '解約手続きについて';
+      mailNoticeMessage = '解約などのお手続きをいただいた場合は、haptico.co.jp より通知メールをお送りします。';
+      showMailNotice = true;
+    }
+    // 目印は消す（リロードでの再表示・URL汚染を防ぐ）。
+    if (checkout === 'success' || checkout === 'cancel' || portalReturn === '1') {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('checkout');
+      url.searchParams.delete('portal_return');
+      window.history.replaceState({}, '', url.toString());
+    }
+  });
 
   // =========================================================
   // 🔴 決済処理ロジック
@@ -96,7 +124,10 @@
     }
 
     isPortalLoading = true;
-    CheckoutService.getSubscriptionPortalUrl(fixedPortalShopId, trimmedMailAddress, window.location.href)
+    // 戻り URL に目印を付け、ポータルから戻った直後に通知メールの案内を出す。
+    const returnUrl = new URL(window.location.href);
+    returnUrl.searchParams.set('portal_return', '1');
+    CheckoutService.getSubscriptionPortalUrl(fixedPortalShopId, trimmedMailAddress, returnUrl.toString())
       .then((response) => {
         const url = response.data as string;
 
@@ -254,3 +285,10 @@
         </div>
     </div>
 </SectionLayout>
+
+<MailNoticeDialog
+    open={showMailNotice}
+    title={mailNoticeTitle}
+    message={mailNoticeMessage}
+    on:close={() => (showMailNotice = false)}
+/>

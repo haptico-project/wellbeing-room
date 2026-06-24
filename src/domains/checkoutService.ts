@@ -10,11 +10,21 @@ export default class CheckoutService {
     }
   }
 
+  // 決済完了/中断の戻り先 URL に目印を付け、戻った直後に通知メールの案内ダイアログを出せるようにする。
+  private static checkoutReturnUrls() {
+    const successUrl = new URL(window.location.href);
+    successUrl.searchParams.set('checkout', 'success');
+    const cancelUrl = new URL(window.location.href);
+    cancelUrl.searchParams.set('checkout', 'cancel');
+    return { successUrl: successUrl.toString(), cancelUrl: cancelUrl.toString() };
+  }
+
   public static checkoutPaymentForPaymanage(priceId: string, agencyCode: string) {
+    const { successUrl, cancelUrl } = this.checkoutReturnUrls();
     const data = {
       agencyCode: agencyCode,
-      checkoutSuccessUrl: window.location.href,
-      checkoutCancelUrl: window.location.href,
+      checkoutSuccessUrl: successUrl,
+      checkoutCancelUrl: cancelUrl,
       orderProducts: [
         {
           productId: `${priceId}`,
@@ -26,10 +36,11 @@ export default class CheckoutService {
   }
 
   public static checkoutSubscriptionForPaymanage(priceId: string, agencyCode: string, oneTimePriceIds: string[] = []) {
+    const { successUrl, cancelUrl } = this.checkoutReturnUrls();
     const data = {
       agencyCode: agencyCode,
-      checkoutSuccessUrl: window.location.href,
-      checkoutCancelUrl: window.location.href,
+      checkoutSuccessUrl: successUrl,
+      checkoutCancelUrl: cancelUrl,
       orderProducts: [
         {
           productId: `${priceId}`,
