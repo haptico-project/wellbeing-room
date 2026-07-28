@@ -40,9 +40,6 @@
         <a href="https://www.instagram.com/facetherapie" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-white/80 hover:text-white transition">
             <img src="{base}/images/sns/instagram.png" alt="" class="w-6 h-6" />
         </a>
-        <a href="https://www.tiktok.com/@tftkabonj6g" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="text-white/80 hover:text-white transition">
-            <img src="{base}/images/sns/tiktok-white.svg" alt="" class="h-6 w-auto" />
-        </a>
     </header>
 
     <div
